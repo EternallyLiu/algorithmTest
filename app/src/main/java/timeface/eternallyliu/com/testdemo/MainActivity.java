@@ -16,13 +16,37 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         Button btn = (Button) findViewById(R.id.btn);
         btn.setOnClickListener(this);
+        a = new int[]{6,1,2,7,9,3,4,5,10,8};
+//        initFastSort();
+        initPaoSort();
+    }
 
-        initFastSort();
+    private void initPaoSort() {
+        //冒泡排序算法
+        int t = 0;
+        for (int i = 0; i < a.length; i++) {
+            System.out.print(a[i] + " ");
+        }
+
+        //从第一个数字开始向后比较，每次确定一个位置要填什么数字而不是确定一个数字本身在哪个位置，需要比较n-1次
+        // 例如从小到大是这样：
+        for (int i = 0; i < a.length - 1; i++) {
+            for (int j = 0; j < a.length - 1 - i; j++) {//需要去掉已经确定的位置
+                if (a[j] > a[j + 1]) {
+                    t = a[j + 1];
+                    a[j + 1] = a[j];
+                    a[j] = t;
+                }
+            }
+        }
+
+        for (int i = 0; i < a.length; i++) {
+            System.out.print(a[i] + " ");
+        }
     }
 
     private void initFastSort() {
         //快速排序算法
-        a = new int[]{6,1,2,7,9,3,4,5,10,8};
         for (int i = 0; i <=9; i++) {
             System.out.print(a[i] + " ");
         }
@@ -33,7 +57,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         for (int i = 0; i <=9; i++) {
             System.out.print(a[i] + " ");
-            System.out.println("执行啦");
         }
     }
 
